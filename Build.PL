@@ -30,9 +30,6 @@ my $builder = Alien::Base::ModuleBuild->new(
     dist_author => 'Henrik Brix Andersen <henrik@brixandersen.dk>',
     license  => 'perl',
 
-    extra_compiler_flags => $libusbx->cflags(),
-    extra_linker_flags => $libusbx->libs(),
-
     configure_requires => {
         'Alien::Base' => '0.003',
         'Module::Build' => '0.4004',
