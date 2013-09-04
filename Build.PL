@@ -46,7 +46,7 @@ my $builder = Alien::Base::ModuleBuild->new(
         'Alien::LibUSBx' => '0.01',
     },
 
-    alien_name => 'libusbx',
+    alien_name => 'libusb',
     alien_repository_default => {
         protocol => 'http',
         location => "/project/libusb/libusb-compat-0.1/libusb-compat-$libusb_compat_version",
