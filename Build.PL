@@ -27,7 +27,7 @@ my $libs = $libusbx->libs();
 
 my $builder = Alien::Base::ModuleBuild->new(
     module_name => 'Alien::LibUSB::Compat',
-    dist_author => 'Henrik Brix Andersen <henrik@brixandersen.dk>',
+    dist_author => 'Henrik Brix Andersen <brix@cpan.org>',
     license  => 'perl',
 
     configure_requires => {
