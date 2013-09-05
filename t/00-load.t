@@ -1,15 +1,10 @@
-#!/usr/bin/perl
+#!/usr/bin/perl -w
 
-use 5.006;
 use strict;
-use warnings FATAL => 'all';
 
-use Test::More;
+use Test::More tests => 2;
 
-plan tests => 1;
+BEGIN { use_ok('Alien::LibUSB::Compat') };
+require_ok('Alien::LibUSB::Compat');
 
-BEGIN {
-    use_ok( 'Alien::LibUSB::Compat' ) || print "Bail out!\n";
-}
-
-diag( "Testing Alien::LibUSB::Compat $Alien::LibUSB::Compat::VERSION, Perl $], $^X" );
+diag("Testing Alien::LibUSB::Compat $Alien::LibUSB::Compat::VERSION, Perl $], $^X");
