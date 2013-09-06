@@ -37,6 +37,7 @@ my $builder = Alien::Base::ModuleBuild->new(
     },
 
     test_requires => {
+        'Config' => '0',
         'Test::More' => '0',
     },
 
