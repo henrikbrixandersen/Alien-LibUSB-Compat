@@ -3,10 +3,9 @@
 use strict;
 
 use Config;
-use Test::More tests => 5;
+use Test::More tests => 4;
 
-BEGIN { use_ok('Alien::LibUSB::Compat') };
-require_ok('Alien::LibUSB::Compat');
+BEGIN { require_ok('Alien::LibUSB::Compat'); }
 
 diag("Testing Alien::LibUSB::Compat $Alien::LibUSB::Compat::VERSION, Perl $], $^X, OS $^O ($Config{'archname'})");
 
