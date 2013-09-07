@@ -52,7 +52,6 @@ my $builder = Alien::Base::ModuleBuild->new(
         protocol => 'http',
         location => "/project/libusb/libusb-compat-0.1/libusb-compat-$libusb_compat_version",
         exact_filename => "libusb-compat-$libusb_compat_version.tar.bz2",
-        exact_version => $libusb_compat_version,
     },
     alien_repository => \@alien_repos,
     alien_build_commands => [
