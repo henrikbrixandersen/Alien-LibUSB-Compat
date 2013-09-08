@@ -58,6 +58,8 @@ my $builder = Alien::Base::ModuleBuild->new(
         "env LIBUSB_1_0_CFLAGS='$cflags' LIBUSB_1_0_LIBS='$libs' %pconfigure --prefix=%s",
         'make',
     ],
+
+    add_to_cleanup => ['_Inline'],
 );
 
 $builder->create_build_script;
