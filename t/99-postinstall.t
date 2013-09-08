@@ -3,29 +3,22 @@
 use strict;
 
 use Test::More;
+use Alien::LibUSB::Compat;
 
-unless ($ENV{POSTINSTALL_TESTING}) {
-    plan(skip_all => "Skipping post-install tests");
+my $libusb = Alien::LibUSB::Compat->new;
+
+if ($libusb->install_type eq 'system' || $ENV{POSTINSTALL_TESTING}) {
+    eval 'use Inline';
+    if ($@) {
+        plan(skip_all => 'Inline required');
+    } else {
+        plan tests => 1;
+    }
 } else {
-    plan tests => 1;
+    plan(skip_all => 'Skipping post-install tests');
 }
 
-my $libusb;
-BEGIN {
-    use Alien::LibUSB::Compat;
-    $libusb = Alien::LibUSB::Compat->new;
-}
-use Inline (C => 'DATA', CCFLAGS => $libusb->cflags, LIBS => $libusb->libs);
-
-eval "init()";
-pass("init()") unless $@;
-
-my $type = $libusb->install_type;
-diag "Initialized libusb-0.1, install type $type\n";
-
-__DATA__
-__C__
-
+my $c = <<END;
 #include <usb.h>
 
 void
@@ -35,3 +28,13 @@ init()
        the USB busses/devices available on the system. This will have to do. */
     usb_init();
 }
+END
+
+Inline->bind(C => $c, CCFLAGS => $libusb->cflags, LIBS => $libusb->libs);
+
+eval "init()";
+pass('Initialize libusb-0.1') unless $@;
+
+my $type = $libusb->install_type;
+diag "Initialized libusb-0.1, install type $type\n";
+
